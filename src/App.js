@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import SurveyDone from "./pages/SurveyDone";
+import SurveyPage from "./pages/SurveyPage"; // 追加
+import SurevyCommentPage from "./pages/SurevyCommentPage";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/survey/home" element={<Home />} />
+        <Route path="/survey/:companyId/:storeId" element={<SurveyPage />} /> {/* 追加 */}
+        <Route path="/survey/comment/:companyId/:storeId" element={<SurevyCommentPage />} />
+        <Route path="/survey/surveydone" element={<SurveyDone />} />
+      </Routes>
+    </Router>
   );
 }
 
