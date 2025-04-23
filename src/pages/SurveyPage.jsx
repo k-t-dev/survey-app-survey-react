@@ -13,6 +13,10 @@ const SurveyPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [showPopup, setShowPopup] = useState(false);
+  const [googleLink, setGoogleLink] = useState("");
+
+
   useEffect(() => {
     const fetchSurveyData = async () => {
       try {
@@ -110,7 +114,13 @@ const SurveyPage = () => {
 
       if (firstQuestionResponse) {
         if (firstQuestionResponse.judge === "google") {
-          window.location.href = firstQuestionResponse.google_review_link;
+          setGoogleLink(firstQuestionResponse.google_review_link);
+          setShowPopup(true);
+      
+          // 3秒後に自動遷移
+          setTimeout(() => {
+            window.location.href = firstQuestionResponse.google_review_link;
+          }, 3000);
           return;
         } else if (firstQuestionResponse.judge === "custom") {
           navigate(`/survey/comment/${companyId}/${storeId}`, { state: { surveyPayload } });
@@ -152,7 +162,6 @@ const SurveyPage = () => {
         </div>
       ))}
 
-
         <button
           type="submit"
           disabled={!isFormComplete}
@@ -170,6 +179,21 @@ const SurveyPage = () => {
           次へ
         </button>
       </form>
+
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <p>Googleで具体的な内容をお聞かせください。<br />※数秒後に自動的に遷移します</p>
+            <button
+              onClick={() => (window.location.href = googleLink)}
+              className="popup-button"
+            >
+              Google投稿フォームへ
+            </button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
