@@ -74,7 +74,10 @@ const SurevyCommentPage = () => {
   return (
     <div className="review-container">
       <h1>レビューを入力</h1>
-      <p>星を選択してください<span style={{ color: 'red' }}>必須</span></p>
+      <div className="review-form">
+      <p>
+        星を選択してください<span style={{ color: 'red' }}>必須</span>
+      </p>
       <div className="star-rating">
         {[1, 2, 3, 4, 5].map((star) => (
           <FaStar
@@ -113,15 +116,7 @@ const SurevyCommentPage = () => {
           送信
         </button>
       </form>
-
-      {/* デバッグ用に画面にも表示
-      <div style={{ marginTop: "20px", padding: "10px", backgroundColor: "#f4f4f4", borderRadius: "5px" }}>
-        <h3>デバッグ情報:</h3>
-        <pre style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
-          {JSON.stringify(surveyData, null, 2)}
-        </pre>
-      </div> */}
-
+    </div>
     </div>
   );
 };

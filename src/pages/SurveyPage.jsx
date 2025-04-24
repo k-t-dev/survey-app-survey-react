@@ -140,7 +140,7 @@ const SurveyPage = () => {
   return (
     <div className="survey-container">
       <h1>店舗アンケート</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="survey-form">
 
       {surveyData.map((question, index) => (
         <div key={question.question_id} className="question">
