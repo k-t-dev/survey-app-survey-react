@@ -129,11 +129,13 @@ button {
 
 .popup-content {
   background: white;
+  color: #333; /* ← これを追加 */
   padding: 30px 20px;
   border-radius: 8px;
   text-align: center;
   max-width: 90%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateZ(0); /* Chromeでの表示バグ防止用 */
 }
 
 .popup-button {
