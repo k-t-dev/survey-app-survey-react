@@ -144,7 +144,9 @@ const SurveyPage = () => {
 
       {surveyData.map((question, index) => (
         <div key={question.question_id} className="question">
-          <p className="question-text"><strong>{index + 1}.</strong> {question.question}</p>
+          <p className="question-text">
+            <span className="question-number">{index + 1}.</span> {question.question}
+          </p>
           <div className="options">
             {question.options.map((option, i) => (
               <label key={i} className="option-label">
