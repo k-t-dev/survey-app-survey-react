@@ -148,3 +148,10 @@ button {
   cursor: pointer;
   border-radius: 5px;
 }
+
+
+/* CSS */
+.question-text {
+  color: #000;           /* 黒色 */
+  font-weight: normal;   /* 通常の太さ */
+}
